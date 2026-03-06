@@ -19,7 +19,7 @@ Both methods operate on LiDAR point cloud data stored in **LAS format**.
 
 ---
 
-## Method 1: Robust Ground Filtering (`thesis_abground.py`)
+## Method 1: Robust Ground Filtering (`abground.py`)
 
 This script estimates the terrain surface using **local plane fitting with iterative weighting**.
 
@@ -50,7 +50,7 @@ These features are combined to create a robust terrain estimation.
 
 ---
 
-## Method 2: Rule-Based Filtering (`thesis_combined.py`)
+## Method 2: Rule-Based Filtering (`combined.py`)
 
 The second script implements a simpler filtering approach based purely on LiDAR attributes.
 
