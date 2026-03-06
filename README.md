@@ -87,6 +87,67 @@ The filtered ground points can then be used to generate **Digital Terrain Models
 
 ---
 
+## Algorithm Overview
+
+### Robust Ground Filtering (`abground.py`)
+
+```
+LiDAR Point Cloud (.las)
+        │
+        ▼
+Build spatial index (KD-tree)
+        │
+        ▼
+Find neighbouring points within radius
+        │
+        ▼
+Fit local plane using weighted least squares
+        │
+        ▼
+Update weights using:
+ - residual distance from surface
+ - intensity values
+ - number of returns
+        │
+        ▼
+Iterate surface fitting
+        │
+        ▼
+Compute residual for each point
+        │
+        ▼
+Classify points
+Ground (terrain)  /  Non-ground (vegetation)
+```
+
+---
+
+### Rule-Based Filtering (`combined.py`)
+
+```
+LiDAR Point Cloud (.las)
+        │
+        ▼
+Extract attributes
+ - intensity
+ - number of returns
+        │
+        ▼
+Analyze distributions (histograms)
+        │
+        ▼
+Apply rule-based thresholds
+        │
+        ▼
+Assign score to each point
+        │
+        ▼
+Classify points into:
+ - strict ground
+ - relaxed ground
+ - vegetation candidates
+```
+
 ## Requirements
 
 The scripts require the following Python libraries:
